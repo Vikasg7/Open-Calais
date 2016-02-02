@@ -1,0 +1,29 @@
+{
+  "name": "open-calais-node",
+  "version": "0.0.1",
+  "description": "Command Line to tool to ping Open Calais with raw data to get tagged Entities",
+  "main": "oc.js",
+  "scripts": {
+    "test": "pending"
+  },
+  "repository": {
+    "type": "git",
+    "url": "pending"
+  },
+  "keywords": [
+    "Open",
+    "Calais",
+    "Tagged",
+    "Tag",
+    "it",
+    "Semantics",
+    "Search",
+    "Engine"
+  ],
+  "author": "Vikas Gautam <v33vikasgautam@gmail.com> (http://mytrikks.blogspot.com)",
+  "license": "MIT",
+  "dependencies": {
+    "request": "^2.67.0",
+    "yargs": "^3.32.0"
+  }
+}
