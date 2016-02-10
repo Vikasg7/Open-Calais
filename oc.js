@@ -1,3 +1,5 @@
+var TOKEN = "5k41KArmK28pYAkrpDxFgoRLnt94JuGX"  //change API Key here
+
 var args = require("yargs")
             .usage("Usage: node oc [Options]")
             .demand(["i", "o"])
@@ -13,32 +15,50 @@ var args = require("yargs")
 
 var request = require("request")
 var fs = require("fs")
-var TOKEN = "wInkrGNmedplcuUoQBJppYP1VZ1zmwou"
+var loopWhile = require("deasync").loopWhile
+var path = require("path")
+
+// Creating output file to append data later on
+fs.writeFileSync(args.o, "", "UTF-8")
+
 var inputData
 
 fs.readFile(args.i, function (err, data)  {
-   inputData = data.toString().replace(/(\r\n|\r|\n)/g, "\n").trim()
-   tagIt(inputData)
+   var inputDataLines = data.toString().replace(/(\r\n|\r|\n)/g, "\n").trim().split("\n")
+   var count = parseInt(inputDataLines.length / 300) + 1
+   for (var i = 0; i < count; i++) {
+      var from = i*300
+      var to = (i+1)*300
+      inputData = inputDataLines.slice(from, to).join("\n")
+      var rawJSON = tagIt(inputData)
+      parseToCSV(JSON.parse(rawJSON))
+   }
+   console.log("Please check the output in :-", path.resolve(__dirname, args.o))
 })
 
 function tagIt(rawData) {
+   var html
    request({
-         method: "POST",
-         url: "https://api.thomsonreuters.com/permid/calais?access-token=" + TOKEN,
-         body: rawData,
-         headers: {
-            "Content-Type": "text/raw",
-            "OutputFormat": "application/json",
-            "X-AG-Access-Token": TOKEN,
-            "omitOutputtingOriginalText":true
-         }
-      },
-      function (err, resp, body) {
-         if (err) { console.log("Error"); return }
-         parseToCSV(JSON.parse(body.toString()))
-         writer.end()
+      method: "POST",
+      url: "https://api.thomsonreuters.com/permid/calais?access-token=" + TOKEN,
+      body: rawData,
+      headers: {
+         "Content-Type": "text/raw",
+         "OutputFormat": "application/json",
+         "X-AG-Access-Token": TOKEN,
+         "omitOutputtingOriginalText":true
       }
-   )   
+   },
+   function (err, resp, body) {
+      if (err) { 
+         console.log("Error")
+         process.exit()
+      }
+      html = body
+   })
+   loopWhile(function () { return html === undefined })
+   // console.log(JSON.parse(html))
+   return html
 }
 
 function parseToCSV(json) {
@@ -66,5 +86,5 @@ function parseToCSV(json) {
          output = rowNum > -1 ? [output + line, tags[rowNum], names[rowNum] + "\n"].join(",") : output
       })
    })
-   fs.writeFileSync(args.o, output, "UTF-8")
+   fs.appendFileSync(args.o, output, "UTF-8")
 }

@@ -1,0 +1,1 @@
+node oc -i ./Input.txt -o ./vikas.csv

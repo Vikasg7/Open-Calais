@@ -23,6 +23,7 @@
   "author": "Vikas Gautam <v33vikasgautam@gmail.com> (http://mytrikks.blogspot.com)",
   "license": "MIT",
   "dependencies": {
+    "deasync": "^0.1.4",
     "request": "^2.67.0",
     "yargs": "^3.32.0"
   }
