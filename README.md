@@ -6,16 +6,15 @@
 
 <h3>Installation</h3>
    1. `npm i Open-Calais`
-   <br>
+
    2. <h5>Your Open-Calais API Key or API Token</h5> 
    <p>You have to register on Open Calais website to get an API for autorized access. When you get an API, you have to have to add it in the code in the first line of oc.js like this:-</p>
    ```javascript
    var TOKEN = "YOUR API KEY"
    ```
-   <br><br>
-   3. Test command:-
-    <br>
-    `node oc -i ./Input.txt -o ./Output.csv`
+<h3>Test command</h3>
+`node oc -i ./Input.txt -o ./Output.csv`
+
 <h3>Usage</h3>
 <p>This tool is a command line Tool. Here is the Usage :-</p>
 ```
