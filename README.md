@@ -9,7 +9,7 @@
 
    2. <h5>Your Open-Calais API Key or API Token</h5> 
    <p>You have to register on Open Calais website to get an API for autorized access. When you get an API, you have to have to add it in the code in the first line of oc.js like this:-</p>
-   ```javascript
+   ```
    var TOKEN = "YOUR API KEY"
    ```
 
@@ -30,6 +30,7 @@ Options:
 
 Copyright 2015 Vikas Gautam
 ```
+
 <h4>Donate</h4>
 <p>If this repository helps you anyhow, please don't mind coming back and 
    <a href="https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=F3QQCWFPWHBYE" target="_blank">Buy Me Coffee</a>
