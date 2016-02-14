@@ -4,11 +4,11 @@
   "description": "Command Line to tool to ping Open Calais with raw data to get tagged Entities",
   "main": "oc.js",
   "scripts": {
-    "test": "pending"
+    "test": "node oc -i ./Input.txt -o ./Output.csv"
   },
   "repository": {
     "type": "git",
-    "url": "pending"
+    "url": "https://github.com/Vikasg7/Open-Calais.git"
   },
   "keywords": [
     "Open",

@@ -1,4 +1,4 @@
-var TOKEN = "5k41KArmK28pYAkrpDxFgoRLnt94JuGX"  //change API Key here
+var TOKEN = ""  //change API Key here
 
 var args = require("yargs")
             .usage("Usage: node oc [Options]")
