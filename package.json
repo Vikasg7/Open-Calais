@@ -1,6 +1,6 @@
 {
   "name": "open-calais",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "description": "Command Line to tool to ping Open Calais with raw data to get tagged Entities",
   "main": "oc.js",
   "scripts": {
